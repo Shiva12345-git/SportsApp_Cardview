@@ -1,0 +1,43 @@
+package com.example.sportsapp_cardview
+
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        // 1-Recycler view
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+
+        // 2- Data Source: List of SportModel objectes
+
+        var sportsList: ArrayList<SportModel> = ArrayList()
+
+        val sport1 = SportModel(R.drawable.football,"Football")
+        val sport2 = SportModel(R.drawable.basketball,"Basketball")
+        val sport3 = SportModel(R.drawable.ping,"Ping Pong")
+        val sport4 = SportModel(R.drawable.tennis,"Tennis")
+        val sport5 = SportModel(R.drawable.volley,"Volleyball")
+
+        sportsList.add(sport1)
+        sportsList.add(sport2)
+        sportsList.add(sport3)
+        sportsList.add(sport4)
+        sportsList.add(sport5)
+
+        // 3- Adapter
+        val adapter = SportAdapter(sportsList)
+        recyclerView.adapter = adapter
+
+        }
+    }
